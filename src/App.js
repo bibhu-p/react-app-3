@@ -1,24 +1,64 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import storage from './storage';
 
 function App() {
+  const [storageData, setStorageData] = useState(storage)
+  const [newUserData, setNewUserData] = useState(
+    {
+      name: "",
+      age: 0,
+      phone: 0,
+      address: {
+        city: "",
+        state: "",
+        zipCode: 0,
+      },
+      idProof: {
+        adhaar: 0,
+        voterId: 0,
+        pan: ""
+      },
+      collegeInfo: {
+        name: "",
+        address: "",
+        branch: "",
+        course: ""
+      }
+    }
+  )
+
+  const [editUserData, setEditUserData] = useState(
+    {
+      name: "",
+      age: 0,
+      phone: 0,
+      address: {
+        city: "",
+        state: "",
+        zipCode: 0,
+      },
+      idProof: {
+        adhaar: 0,
+        voterId: 0,
+        pan: ""
+      },
+      collegeInfo: {
+        name: "",
+        address: "",
+        branch: "",
+        course: ""
+      }
+    }
+  )
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Home Page</h1>
+    </>
   );
 }
 
