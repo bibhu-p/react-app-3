@@ -17,16 +17,16 @@ function App() {
   const [newUserData, setNewUserData] = useState(
     {
       name: "",
-      age: 0,
-      phone: 0,
+      age: '',
+      phone: '',
       address: {
         city: "",
         state: "",
-        zipCode: 0,
+        zipCode: '',
       },
       idProof: {
-        adhaar: 0,
-        voterId: 0,
+        adhaar: '',
+        voterId: '',
         pan: ""
       },
       collegeInfo: {
@@ -68,6 +68,59 @@ function App() {
     setViewModalVisible(true);
   }
 
+  const clear = () => {
+    setNewUserData({ ...newUserData, name: '', email: "", phone: "", age: "",
+    address: {
+      city:"",
+      state:"", 
+      zipCode:""},
+    idProof:{
+      adhaar: '',
+      voterId: '',
+      pan: ""},
+    collegeInfo: {
+      name: "",
+      address: "",
+      branch: "",
+      course: ""
+    }
+    
+    })
+  }
+
+  // Create Func
+  const formSubmit = (event) => {
+    console.log('create function------>>>>>')
+    event.preventDefault();
+
+    const newUser = {
+      name: newUserData.name,
+      email: newUserData.email,
+      age: newUserData.age,
+      phone: newUserData.phone,
+      address:{
+        city: newUserData.address.city,
+        state: newUserData.address.state,
+        zipCode :newUserData.address.zipCode
+      },
+      idProof:{
+        adhaar:newUserData.idProof.adhaar,
+        voterId:newUserData.idProof.voterId,
+        pan:newUserData.idProof.pan
+      },
+      collegeInfo:{
+        name:newUserData.collegeInfo.name,
+        address:newUserData.collegeInfo.address,
+        branch:newUserData.collegeInfo.branch,
+        course:newUserData.collegeInfo.course
+      }
+    };
+  
+  const newUsers = [...storage, newUser];
+  setStorageData(newUsers);
+  setAddModalVisible(false);
+  clear();
+};
   // view data
   const viewData =(i)=>{
 
@@ -105,6 +158,9 @@ function App() {
      />}
     {addModalVisible && <CreateAndUpdateModal 
      setAddModalVisible = {setAddModalVisible}
+     formSubmit = {formSubmit}
+     newUserData = {newUserData}
+     setNewUserData = {setNewUserData}
      />}
     </>
   );

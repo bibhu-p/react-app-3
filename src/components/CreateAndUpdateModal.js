@@ -15,117 +15,109 @@ import {Modal, Button} from 'react-bootstrap';
         name="name"
         required="required"
         placeholder="Enter name..."
-        // value={data.name}
-        // onChange={(e) => setNewUserData({ ...newUserData, name: e.target.value })}
-        />
-        <input
-        type="email"
-        name="email"
-        required="required"
-        placeholder="Enter email..."
-        // value={newUserData.email}
-        // onChange={(e) => setNewUserData({ ...newUserData, email: e.target.value })}
+        value={props.newUserData.name}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, name: e.target.value })}
         />
         <input
         type="text"
         name="phone"
         required="required"
         placeholder="Enter phone number..."
-        // value={newUserData.phone}
-        // onChange={(e) => setNewUserData({ ...newUserData, phone: e.target.value })}
+        value={props.newUserData.phone}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, phone: e.target.value })}
         />
         <input
         type="text"
         name="age"
         required="required"
         placeholder="Enter age"
-        // value={newUserData.age}
-    //     onChange={(e) => setNewUserData({ ...newUserData, age: e.target.value })}
+        value={props.newUserData.age}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, age: e.target.value })}
         />
         <input
         type="text"
         name="city"
         required="required"
         placeholder="Enter city"
-        // value={newUserData.address.city}
-        // onChange={(e) => setNewUserData({ ...newUserData, address:{...newUserData.address, city: e.target.value }})}
+        value={props.newUserData.address.city}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, address:{...props.newUserData.address, city: e.target.value }})}
         />
         <input
         type="text"
         name="state"
         required="required"
         placeholder="Enter state"
-        // value={newUserData.address.state}
-        // onChange={(e) => setNewUserData({ ...newUserData, address:{...newUserData.address, state: e.target.value} })}
+        value={props.newUserData.address.state}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, address:{...props.newUserData.address, state: e.target.value} })}
         />
         <input
         type="text"
         name="zipCode"
         required="required"
         placeholder="Enter zipCode"
-        // value={newUserData.address.zipCode}
-        // onChange={(e) => setNewUserData({ ...newUserData, address:{...newUserData.address, zipCode: e.target.value} })}
+        value={props.newUserData.address.zipCode}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, address:{...props.newUserData.address, zipCode: e.target.value} })}
         />
         <input
         type="text"
         name="adhaar"
         required="required"
         placeholder="Enter Adhaar No"
-        // value={newUserData.address.zipCode}
-        // onChange={(e) => setNewUserData({ ...newUserData, address:{...newUserData.address, zipCode: e.target.value} })}
+        value={props.newUserData.idProof.adhaar}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, idProof:{...props.newUserData.idProof, adhaar: e.target.value} })}
         />
         <input
         type="text"
         name="voterId"
         required="required"
         placeholder="Enter Voter Id"
-        // value={newUserData.address.zipCode}
-        // onChange={(e) => setNewUserData({ ...newUserData, address:{...newUserData.address, zipCode: e.target.value} })}
+        value={props.newUserData.idProof.voterId}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, idProof:{...props.newUserData.idProof, voterId: e.target.value} })}
         />
         <input
         type="text"
         name="pan"
         required="required"
         placeholder="Enter PAN No"
-        // value={newUserData.address.zipCode}
-        // onChange={(e) => setNewUserData({ ...newUserData, address:{...newUserData.address, zipCode: e.target.value} })}
+        value={props.newUserData.idProof.pan}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, idProof:{...props.newUserData.idProof, pan: e.target.value} })}
         />
         <input
         type="text"
         name="name"
         required="required"
         placeholder="Enter College Name"
-        // value={newUserData.address.zipCode}
-        // onChange={(e) => setNewUserData({ ...newUserData, address:{...newUserData.address, zipCode: e.target.value} })}
+        value={props.newUserData.collegeInfo.name}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, collegeInfo:{...props.newUserData.collegeInfo, name: e.target.value} })}
         />
         <input
         type="text"
-        name="location"
+        name="address"
         required="required"
         placeholder="Enter College Address"
-        // value={newUserData.address.zipCode}
-        // onChange={(e) => setNewUserData({ ...newUserData, address:{...newUserData.address, zipCode: e.target.value} })}
+        value={props.newUserData.collegeInfo.address}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, collegeInfo:{...props.newUserData.collegeInfo, address: e.target.value} })}
         />
         <input
         type="text"
         name="branch"
         required="required"
         placeholder="Enter Branch"
-        // value={newUserData.address.zipCode}
-        // onChange={(e) => setNewUserData({ ...newUserData, address:{...newUserData.address, zipCode: e.target.value} })}
+        value={props.newUserData.collegeInfo.branch}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, collegeInfo:{...props.newUserData.collegeInfo, branch: e.target.value} })}
         />
         <input
         type="text"
         name="course"
         required="required"
         placeholder="Enter Course"
-        // value={newUserData.address.zipCode}
-        // onChange={(e) => setNewUserData({ ...newUserData, address:{...newUserData.address, zipCode: e.target.value} })}
+        value={props.newUserData.collegeInfo.course}
+        onChange={(e) => props.setNewUserData({ ...props.newUserData, collegeInfo:{...props.newUserData.collegeInfo, course: e.target.value} })}
         />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={()=>props.setAddModalVisible(false)}>Close</Button>
-          <Button variant="primary">ADD</Button>
+          <Button variant="primary" onClick={()=>props.formSubmit()}>ADD</Button>
         </Modal.Footer>
         </Modal>
         </>
