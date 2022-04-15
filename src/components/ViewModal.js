@@ -6,7 +6,7 @@ import '../App.css';
     const ViewModal =(props)=>{
     return(
         <>
-        <Modal show={true} onHide={()=>props.setViewModalVisible(false)}> 
+        <Modal show={true} scrollable={true} onHide={()=>props.setViewModalVisible(false)}> 
         <Modal.Header closeButton>
         <Modal.Title>User Details</Modal.Title>
         </Modal.Header>

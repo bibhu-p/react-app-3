@@ -1,12 +1,21 @@
-import React from 'react'
-import { Button, Table} from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Button, Table } from 'react-bootstrap';
 import { BiEditAlt } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BsFillEyeFill } from "react-icons/bs";
+import SweetAlert from 'react-bootstrap-sweetalert';
+
 
 const TableView = (props) => {
+
+  const [alert, setAlert] = useState(false);
+  const [delIndex, setDelIndex] = useState(null);
+  const [successAlert, setSuccessAlert] = useState(false);
+
+
   return (
-    <Table bordered >
+    <>
+      {props.data.length > 0 && <> <Table bordered >
         <thead>
           <tr>
             <th>SL NO</th>
@@ -31,13 +40,35 @@ const TableView = (props) => {
               <td>{data.address.zipCode}</td>
 
               <td>
-              <Button style={{"backgroundColor":"#b8ccf3", "border":"none"}} onClick={()=>props.viewAllData(i)} ><BsFillEyeFill color='black' /></Button>
-              <Button style={{"backgroundColor":"#b8ccf3", "border":"none","marginLeft":"10px"}} onClick={()=>props.viewData(i)} ><BiEditAlt color='black' /></Button>
-              <Button style={{"backgroundColor":"#b8ccf3", "border":"none", "marginLeft":"10px"}}  onClick={()=>props.onDelete(i)}><RiDeleteBinLine color='black' /></Button></td>
+                <Button style={{ "backgroundColor": "#b8ccf3", "border": "none" }} onClick={() => props.viewAllData(i)} ><BsFillEyeFill color='black' /></Button>
+                <Button style={{ "backgroundColor": "#b8ccf3", "border": "none", "marginLeft": "10px" }} onClick={() => props.viewData(i)} ><BiEditAlt color='black' /></Button>
+                <Button style={{ "backgroundColor": "#b8ccf3", "border": "none", "marginLeft": "10px" }} onClick={() => { setDelIndex(i); setAlert(true); }}><RiDeleteBinLine color='black' /></Button></td>
             </tr>
           )}
         </tbody>
-      </Table>
+      </Table></>
+      }
+
+      {alert && <>
+        <SweetAlert
+          warning
+          showCancel
+          confirmBtnText="Yes, delete it!"
+          confirmBtnBsStyle="danger"
+          title="Are you sure?"
+          onConfirm={() => { props.onDelete(delIndex); setAlert(false); setSuccessAlert(true) }}
+          onCancel={() => setAlert(false)}
+          focusCancelBtn
+        >
+          You will not be able to recover this data!
+        </SweetAlert>
+      </>}
+      {successAlert && <>
+        <SweetAlert success title="Success" onConfirm={() => setSuccessAlert(false)} >
+          Data Deleted Successfully !
+        </SweetAlert>
+      </>}
+    </>
   )
 }
 
